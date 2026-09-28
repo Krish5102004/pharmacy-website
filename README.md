@@ -34,38 +34,36 @@ A complete, responsive e-commerce web application for a pharmacy. This project f
 ## 📂 Project Structure
 
 ```text
-pharmacy-project/
+pharmacy-website/
 │
-├── backend/                        # Python Flask Backend
-│   ├── app.py                      # Main Flask application & API routes
-│   ├── requirements.txt            # Python dependencies (Flask, mysql-connector, etc.)
-│   ├── .env                        # Environment variables (DB password, secret keys)
-│   └── database/
-│       └── schema.sql              # MySQL table creation and sample data scripts
+├── backend/                        # Flask server & Python backend
+│   ├── app.py                      # Main API routing and configuration
+│   ├── requirements.txt            # Python dependencies
+│   └── venv/                       # Python Virtual Environment
+│       └── database/               
+│           └── schema.sql          # MySQL database initialization script
 │
-└── pharmacy-frontend/                       # React.js Frontend
-    ├── package.json                # Node.js dependencies and project scripts
-    ├── tailwind.config.js          # Tailwind CSS configuration
-    ├── postcss.config.js           # PostCSS config (required for Tailwind)
-    ├── public/
-    │   ├── index.html              # Main HTML template
-    │   └── favicon.ico 
-    │
-    └── src/
-        ├── index.js                # React entry point
-        ├── index.css               # Global CSS (Tailwind imports go here)
-        ├── App.js                  # Main app component & React Router setup
-        │
-        ├── components/             # Reusable UI components
-        │   ├── Navbar.js           # Navigation bar (Home, Cart, Profile, Login)
-        │   ├── MedicinesList.js    # Fetches and displays the product grid
-        │   ├── Cart.js             # Shopping cart and checkout logic
-        │   ├── Login.js            # User authentication form
-        │   ├── Register.js         # New user sign-up form
-        │   └── Profile.js          # User details and order history
-        │
-        └── assets/                 # Static files
-            └── images/             # Placeholder images or logos
+├── pharmacy-frontend/              # React frontend application
+│   ├── public/                     # Static assets (HTML, manifests)
+│   │   └── index.html              # Main HTML entry point
+│   │
+│   ├── src/                        # React source code
+│   │   ├── components/             # Reusable UI components
+│   │   │   ├── Cart.js             # Shopping cart and Stripe elements
+│   │   │   ├── CheckoutForm.js     # Stripe payment processing form
+│   │   │   ├── Login.js            # User authentication & registration
+│   │   │   ├── MedicinesList.js    # Storefront product display
+│   │   │   └── Profile.js          # Secure user order history
+│   │   │
+│   │   ├── App.js                  # Main React component and page routing
+│   │   ├── App.css                 # Global styling
+│   │   ├── index.js                # React application entry point
+│   │   └── index.css               # Tailwind CSS imports
+│   │
+│   ├── package.json                # Node dependencies and project scripts
+│   └── tailwind.config.js          # Tailwind CSS styling configuration
+│
+└── README.md                       # Project documentation and setup guide
 ```
 ## 💻 Local Setup Instructions
 Follow these steps to get the project running on your local machine.
