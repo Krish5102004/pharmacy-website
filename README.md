@@ -128,16 +128,19 @@ Running the Application with Docker
 Make sure you have Docker and Docker Compose installed.
 Clone the repository and navigate to the project root.
 Build and spin up all containers in detached mode:
+```
 docker compose up -d --build
-
+```
 
 To view the logs if something goes wrong (e.g., checking the backend):
+```
 docker compose logs backend
-
+```
 
 To stop the application:
+```
 docker compose down
-
+```
 
 ## 💳 Stripe Payment Integration
 
@@ -152,12 +155,14 @@ Create a free account at Stripe.com.
 Turn on Test Mode in your dashboard.
 Locate your Publishable Key and Secret Key.
 Create a .env file in your backend/ directory (ensure this file is added to your .gitignore!) and add your Secret Key:
+```
 STRIPE_SECRET_KEY=sk_test_your_secret_key_here
-
+```
 
 Add your Publishable Key to your React frontend environment variables (usually .env in the frontend/ directory):
+```
 REACT_APP_STRIPE_PUBLIC_KEY=pk_test_your_publishable_key_here
-
+```
 
 ## 🚀 Deployment Notes (AWS EC2)
 If deploying to a cloud server like AWS EC2, you must update the API endpoint URLs in your React code (e.g., Cart.js).
