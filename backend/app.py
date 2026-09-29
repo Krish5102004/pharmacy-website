@@ -11,7 +11,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # 2. CONFIGURATION
 # Replace this with your REAL Stripe Secret Key
-stripe.api_key = stripe.api_key = "sk_test_YOUR_STRIPE_SECRET_KEY"
+stripe.api_key = stripe.api_key = "STRIPE_SECRET_KEY"
 
 def get_db_connection():
     try:
