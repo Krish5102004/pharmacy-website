@@ -115,6 +115,55 @@ Bash
 npm start
 The website will automatically open in your browser at http://localhost:3000
 
+## 🐳 Docker Configuration & Setup
+
+This application is fully containerized using Docker, making it easy to deploy across different environments (like AWS EC2) without worrying about system dependencies.
+Architecture
+The docker-compose.yml file orchestrates three separate containers:
+Frontend (frontend): A React application served via Node/Nginx.
+Backend (backend): A Python Flask REST API.
+Database (db): A MySQL database container.
+Note: The containers communicate using Docker's internal networking. For example, the Flask backend connects to the database using the hostname db instead of localhost.
+Running the Application with Docker
+Make sure you have Docker and Docker Compose installed.
+Clone the repository and navigate to the project root.
+Build and spin up all containers in detached mode:
+docker compose up -d --build
+
+
+To view the logs if something goes wrong (e.g., checking the backend):
+docker compose logs backend
+
+
+To stop the application:
+docker compose down
+
+
+## 💳 Stripe Payment Integration
+
+This project uses Stripe to handle secure checkout and payment processing. The integration is built to comply with strict payment regulations (including RBI guidelines for Indian test accounts) by requiring customer details during the checkout flow.
+Payment Flow
+Initialization: The React frontend requests a client_secret from the Flask backend.
+Processing: The user enters their card details into the secure Stripe <PaymentElement />.
+Confirmation: Stripe processes the payment securely. Upon a succeeded status, the frontend triggers an API call to the backend to officially save the order in the MySQL database and clears the shopping cart.
+Setting up Stripe (Local & Production)
+To run this project, you need your own Stripe API keys.
+Create a free account at Stripe.com.
+Turn on Test Mode in your dashboard.
+Locate your Publishable Key and Secret Key.
+Create a .env file in your backend/ directory (ensure this file is added to your .gitignore!) and add your Secret Key:
+STRIPE_SECRET_KEY=sk_test_your_secret_key_here
+
+
+Add your Publishable Key to your React frontend environment variables (usually .env in the frontend/ directory):
+REACT_APP_STRIPE_PUBLIC_KEY=pk_test_your_publishable_key_here
+
+
+## 🚀 Deployment Notes (AWS EC2)
+If deploying to a cloud server like AWS EC2, you must update the API endpoint URLs in your React code (e.g., Cart.js).
+React runs in the user's browser, so it cannot point to http://localhost:5000 or 127.0.0.1 when deployed.
+You must update the Axios requests to point to your public EC2 IPv4 address (e.g., http://YOUR.AWS.IP.ADDRESS:5000/api/...).
+
 ## 🔒 Security Notes
 
 1. Stripe Compliance: This application uses Stripe PaymentIntents. The server generates a clientSecret, and the React frontend uses Stripe Elements to securely collect payment details. The server never sees or stores raw credit card numbers.
