@@ -16,7 +16,7 @@ function Login({ setUser }) {
     try {
       if (isLogin) {
         // Real Login Request to Flask
-        const res = await axios.post('http://127.0.0.1:5000/api/login', {
+        const res = await axios.post('http://13.201.18.67:5000/api/login', {
           email: formData.email,
           password: formData.password
         });
@@ -24,7 +24,7 @@ function Login({ setUser }) {
         setUser(res.data); // Saves the user object (with ID) to App state
       } else {
         // Real Registration Request to Flask
-        const res = await axios.post('http://127.0.0.1:5000/api/register', {
+        const res = await axios.post('http://13.201.18.67:5000/api/register', {
           name: formData.name,
           email: formData.email,
           password: formData.password

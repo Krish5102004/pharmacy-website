@@ -18,7 +18,7 @@ function Profile({ user, setUser }) {
     // Fetch ONLY this specific user's orders from MySQL
     const fetchMyOrders = async () => {
       try {
-        const res = await axios.get(`http://127.0.0.1:5000/api/orders/${user.id}`);
+        const res = await axios.get(`http://13.201.18.67:5000/api/orders/${user.id}`);
         setUserOrders(res.data);
         setLoading(false);
       } catch (err) {

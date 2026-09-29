@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: pharmacy_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "!Qa1@Ws2#Ed3"
+      MYSQL_DATABASE: pharmacy_db
+    networks:
+      - pharmacy-net
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./backend/venv/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  backend:
+    build: ./backend
+    container_name: pharmacy_backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD= "!Qa1@Ws2#Ed3"
+      - DB_NAME=pharmacy_db
+    networks:
+      - pharmacy-net
+    depends_on:
+      - db
+
+  frontend:
+    build: ./pharmacy-frontend
+    container_name: pharmacy_frontend
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - pharmacy-net
+    depends_on:
+      - backend
+
+
+networks:
+  pharmacy-net:

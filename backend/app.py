@@ -7,16 +7,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # 1. THIS MUST COME FIRST: We create the 'app' variable
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # 2. CONFIGURATION
 # Replace this with your REAL Stripe Secret Key
-stripe.api_key = stripe.api_key = "sk_test_YOUR_SECRET_KEY_HERE"
+stripe.api_key = stripe.api_key = "sk_test_YOUR_STRIPE_SECRET_KEY"
 
 def get_db_connection():
     try:
         return mysql.connector.connect(
-            host="localhost",
+            host="db",
             user="root",
             password="!Qa1@Ws2#Ed3", # Replace with your MySQL password
             database="pharmacy_db"
@@ -155,4 +155,4 @@ def create_payment():
 
 # 4. RUN THE SERVER
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0",port=5000, debug=True)

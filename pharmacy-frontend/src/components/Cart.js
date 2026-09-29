@@ -40,7 +40,7 @@ function Cart({ cart, removeFromCart, user, placeOrder }) {
     }
     
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/create-payment-intent', { total });
+      const response = await axios.post('http://13.201.18.67:5000/api/create-payment-intent', { total });
       setClientSecret(response.data.clientSecret);
       setCheckoutStep('payment');
     } catch (error) {
@@ -52,7 +52,7 @@ function Cart({ cart, removeFromCart, user, placeOrder }) {
   const handlePaymentSuccess = async () => {
     try {
       // Send the order to MySQL
-      await axios.post('http://127.0.0.1:5000/api/orders', {
+      await axios.post('http://13.201.18.67:5000/api/orders', {
         user_id: user.id, // We get this from the new login system
         total: total,
         status: 'Paid',

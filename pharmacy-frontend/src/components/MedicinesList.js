@@ -22,7 +22,7 @@ function MedicinesList({ addToCart }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/api/medicines')
+    axios.get('http://13.201.18.67:5000/api/medicines')
       .then(res => {
         setMedicines(res.data);
         setLoading(false);
