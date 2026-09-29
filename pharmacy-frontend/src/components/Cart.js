@@ -7,7 +7,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 
 // Make sure to put YOUR real publishable key here again!
-const stripePromise = loadStripe('pk_test_YOUR_PUBLIC_KEY');
+const stripePromise = loadStripe('STRIPE_PUBLIC_KEY');
 
 // The image dictionary to keep images consistent across the site
 const medicineImages = {
