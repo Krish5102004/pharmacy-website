@@ -70,7 +70,7 @@ Follow these steps to get the project running on your local machine.
 
 1. Clone the Repository
 Bash
-git clone [https://github.com/Krish5102004/pharmacy-website-devops-practice.git](https://github.com/Krish5102004/pharmacy-website-devops-practice.git)
+git clone [https://github.com/Krish5102004/pharmacy-website-devops-practice.git](https://github.com/Krish5102004/pharmacy-website.git)
 cd pharmacy-website-devops-practice
 
 2. Database Setup (MySQL)
